@@ -95,10 +95,19 @@ class HeroView: UIView {
         ])
     }
     
-    func update(with model: WeatherForecastModel) {
-        cityLabel.text = model.city.name
-        temperatureLabel.text = "\(model.list[0].main.temp)"
-        feelsLikeLabel.text = "Feels like \(model.list[0].main.feelsLike) C"
-        descriptionLabel.text = model.list[0].weather[0].description
+    func update(with model: CurrentWeatherModel) {
+        cityLabel.text = model.name
+        let temperature = Int(ceil(Double(model.main.temp - Double.kelvinToCelsiusValue)))
+        let feelsLikeTemperature = Int(ceil(Double(model.main.feelsLike - Double.kelvinToCelsiusValue)))
+        let celsiusSymbol = "\u{00B0}"
+        temperatureLabel.text = "\(temperature)\(celsiusSymbol)"
+        feelsLikeLabel.text = "Feels like \(feelsLikeTemperature)\(celsiusSymbol)"
+        descriptionLabel.text = model.weather[0].description
+    }
+}
+
+extension Double {
+   static var kelvinToCelsiusValue: Double {
+        return 273.15
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 class NetworkManager {
     
-    func fetchWeatherData(endPoint: URL) async throws -> WeatherForecastModel {
+    func fetchWeatherData<T: Decodable>(endPoint: URL) async throws -> T {
         let (data, response) = try await URLSession.shared.data(from: endPoint)
         
         guard let httpResponse = response as? HTTPURLResponse, 
@@ -18,7 +18,7 @@ class NetworkManager {
         }
         
         let decoder = JSONDecoder()
-        let decodedData = try decoder.decode(WeatherForecastModel.self, from: data)
+        let decodedData = try decoder.decode(T.self, from: data)
         return decodedData
     }
 }
