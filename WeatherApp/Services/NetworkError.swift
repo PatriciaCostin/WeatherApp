@@ -7,5 +7,5 @@
 
 enum NetworkError: Error {
     case badRequest
-    case badEndpoint
+    case badURL
 }

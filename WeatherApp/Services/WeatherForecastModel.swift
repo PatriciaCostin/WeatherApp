@@ -46,10 +46,10 @@ struct WeatherForHourDetails: Codable {
     var tempMin: Double
     var tempMax: Double
     var pressure: Int
-    var seaLevel: Int
-    var groundLevel: Int
+    var seaLevel: Int?
+    var groundLevel: Int?
     var humidity: Int
-    var tempKF: Double
+    var tempKF: Double?
     
     enum CodingKeys: String, CodingKey, Codable {
         case temp
@@ -78,7 +78,7 @@ struct CloudsDetails: Codable {
 struct WindDetails: Codable {
     var speed: Double
     var degreesDirection: Int
-    var gust: Double
+    var gust: Double?
     
     enum CodingKeys: String, CodingKey, Codable {
         case speed
