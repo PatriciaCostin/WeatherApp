@@ -24,7 +24,7 @@ struct CurrentWeatherModel: Codable {
 }
 
 struct RainProbability: Codable {
-    var oneHour: Int
+    var oneHour: Double
     
     enum CodingKeys: String, CodingKey, Codable {
         case oneHour = "1h"

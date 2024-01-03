@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2BB7FB2B4AE7E3000E78D7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BB7FA2B4AE7E3000E78D7 /* ActivityIndicator.swift */; };
 		4DB2AD1C2B42EE1300379A3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD1B2B42EE1300379A3E /* AppDelegate.swift */; };
 		4DB2AD1E2B42EE1300379A3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD1D2B42EE1300379A3E /* SceneDelegate.swift */; };
 		4DB2AD232B42EE1300379A3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB2AD212B42EE1300379A3E /* Main.storyboard */; };
@@ -22,9 +23,11 @@
 		4DB2AD482B4304B300379A3E /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD472B4304B300379A3E /* WeatherService.swift */; };
 		4DB2AD4A2B4327B100379A3E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD492B4327B100379A3E /* LocationService.swift */; };
 		4DB2AD4E2B446E2A00379A3E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD4D2B446E2A00379A3E /* Observable.swift */; };
+		4DB2AD502B4555FD00379A3E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2AD4F2B4555FD00379A3E /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D2BB7FA2B4AE7E3000E78D7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4DB2AD182B42EE1300379A3E /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB2AD1B2B42EE1300379A3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB2AD1D2B42EE1300379A3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,8 @@
 		4DB2AD472B4304B300379A3E /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		4DB2AD492B4327B100379A3E /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4DB2AD4D2B446E2A00379A3E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		4DB2AD4F2B4555FD00379A3E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		4DB2AD512B45765400379A3E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 				4DB2AD322B42EE5200379A3E /* ViewController.swift */,
 				4DB2AD1B2B42EE1300379A3E /* AppDelegate.swift */,
 				4DB2AD1D2B42EE1300379A3E /* SceneDelegate.swift */,
+				4DB2AD512B45765400379A3E /* MyPlayground.playground */,
 				4DB2AD212B42EE1300379A3E /* Main.storyboard */,
 				4DB2AD2F2B42EE4900379A3E /* CustomViews */,
 				4DB2AD362B42EE6900379A3E /* Services */,
@@ -93,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				4DB2AD302B42EE4900379A3E /* HeroView.swift */,
+				4DB2AD4F2B4555FD00379A3E /* DetailView.swift */,
+				4D2BB7FA2B4AE7E3000E78D7 /* ActivityIndicator.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -185,9 +193,11 @@
 				4DB2AD3F2B42EE6900379A3E /* NetworkManager.swift in Sources */,
 				4DB2AD332B42EE5200379A3E /* ViewController.swift in Sources */,
 				4DB2AD1C2B42EE1300379A3E /* AppDelegate.swift in Sources */,
+				4D2BB7FB2B4AE7E3000E78D7 /* ActivityIndicator.swift in Sources */,
 				4DB2AD4E2B446E2A00379A3E /* Observable.swift in Sources */,
 				4DB2AD312B42EE4900379A3E /* HeroView.swift in Sources */,
 				4DB2AD482B4304B300379A3E /* WeatherService.swift in Sources */,
+				4DB2AD502B4555FD00379A3E /* DetailView.swift in Sources */,
 				4DB2AD352B42EE5700379A3E /* ViewModel.swift in Sources */,
 				4DB2AD462B4304A500379A3E /* CurrentWeatherModel.swift in Sources */,
 				4DB2AD422B42EE6900379A3E /* NetworkError.swift in Sources */,
