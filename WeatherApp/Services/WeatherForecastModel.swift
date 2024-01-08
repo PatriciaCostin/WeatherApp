@@ -11,7 +11,6 @@ struct WeatherForecastModel: Codable {
     var cnt: Int
     var list: [WeatherForHour]
     var city: CityDetails
-   
 }
 
 struct WeatherForHour: Codable {
