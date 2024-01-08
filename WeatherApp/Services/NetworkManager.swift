@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkManager {
+final class NetworkManager {
     
     func fetchWeatherData<T: Decodable>(endPoint: URL) async throws -> T {
         let (data, response) = try await URLSession.shared.data(from: endPoint)
