@@ -21,9 +21,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app uses your location in order to provide you accurate weather information.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses your location in order to provide you accurate weather information.</string>
 </dict>
 </plist>

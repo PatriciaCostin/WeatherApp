@@ -4,7 +4,7 @@ import CoreLocation
 /// simplified methods for requesting and retrieving a user's location.
 /// Uses a singleton pattern and is thus accessible via `LocationService.shared`.
 @MainActor
-public class LocationService: NSObject {
+public final class LocationService: NSObject {
     public enum LocationResult {
         case authorized(CLLocation)
         case userDenied
