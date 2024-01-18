@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailView: UIView {
+class DetailView: UIView {
     
     init() {
         super.init(frame: .zero)

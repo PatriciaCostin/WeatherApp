@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HeroView: UIView {
+class HeroView: UIView {
     
     // MARK: - Required methods
     
@@ -23,7 +23,7 @@ final class HeroView: UIView {
     // MARK: - Private properties
     
     private lazy var linearGradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
+      let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.colors = [
             UIColor(named: "LightBlue")?.cgColor ?? UIColor.blue.cgColor,
@@ -44,7 +44,7 @@ final class HeroView: UIView {
         cityLabel.font = .systemFont(ofSize: 25, weight: .semibold)
         return cityLabel
     }()
-    
+
     private lazy var temperatureLabel: UILabel = {
         let temperatureLabel = UILabel()
         temperatureLabel.textAlignment = .center
@@ -130,12 +130,12 @@ final class HeroView: UIView {
             cityLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             cityLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             cityLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
+
             temperatureView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             temperatureView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             temperatureView.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 20),
             temperatureView.heightAnchor.constraint(equalToConstant: 100),
-            
+
             feelsLikeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             feelsLikeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             feelsLikeLabel.topAnchor.constraint(equalTo: temperatureView.bottomAnchor, constant: 0),
@@ -148,30 +148,30 @@ final class HeroView: UIView {
             separator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             separator.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
             separator.heightAnchor.constraint(equalToConstant: 3),
-            
+
             horizontalStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             horizontalStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             horizontalStack.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 10),
             horizontalStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-            
+
             temperatureLabel.centerXAnchor.constraint(equalTo: temperatureView.centerXAnchor),
             temperatureLabel.centerYAnchor.constraint(equalTo: temperatureView.centerYAnchor),
             
             celsiusLabel.topAnchor.constraint(equalTo: temperatureView.topAnchor),
             celsiusLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor),
-            
+
         ])
         
         setInitialValuesDetailView()
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
-        linearGradient.frame = self.bounds
-    }
+            super.layoutSubviews()
+            linearGradient.frame = self.bounds
+        }
     
     func setInitialValuesDetailView() {
-        pressureView.iconView.image = UIImage(systemName: "barometer")?.withTintColor(.white.withAlphaComponent(0.8),
+        pressureView.iconView.image = UIImage(systemName: "barometer")?.withTintColor(.white.withAlphaComponent(0.8), 
                                                                                       renderingMode: .alwaysOriginal)
         pressureView.propertyLabel.text = "Pressure"
         pressureView.descriptorLabel.text = "1000 hPa"
@@ -181,7 +181,7 @@ final class HeroView: UIView {
         humidityView.propertyLabel.text = "Humidity"
         humidityView.descriptorLabel.text = "50 %"
         
-        windSpeedView.iconView.image = UIImage(systemName: "wind")?.withTintColor(.white.withAlphaComponent(0.8),
+        windSpeedView.iconView.image = UIImage(systemName: "wind")?.withTintColor(.white.withAlphaComponent(0.8), 
                                                                                   renderingMode: .alwaysOriginal)
         windSpeedView.propertyLabel.text = "Wind speed"
         windSpeedView.descriptorLabel.text = "0.0 m/s"
@@ -197,7 +197,7 @@ final class HeroView: UIView {
         temperatureLabel.text = "\(temperature)"
         feelsLikeLabel.text = "Feels like \(feelsLikeTemperature)\(celsiusSymbol)"
         descriptionLabel.text = description
-        
+    
         pressureView.descriptorLabel.text = "\(model.main.pressure) hPa"
         humidityView.descriptorLabel.text = "\(model.main.humidity) %"
         windSpeedView.descriptorLabel.text = "\(model.wind.speed) m/s"
@@ -207,7 +207,7 @@ final class HeroView: UIView {
         let words = description.components(separatedBy: " ")
         let capitalizedWords = words.map {$0.capitalized}
         var newDescription = ""
-        
+
         for (index, word) in capitalizedWords.enumerated() {
             if index < (capitalizedWords.count - 1) {
                 newDescription.append(word + " ")
@@ -215,6 +215,7 @@ final class HeroView: UIView {
                 newDescription.append(word)
             }
         }
+        
         return newDescription
     }
 }
