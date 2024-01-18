@@ -7,339 +7,77 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "20EE297E-3B0B-41D5-A9ED-C758F50E7319"
+            uuid = "CA75A6D3-0DC2-46B2-8408-F206FE923053"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherApp/CustomViews/HourlyForecastView.swift"
+            filePath = "WeatherApp/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "update(with:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "sceneDidBecomeActive(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "20EE297E-3B0B-41D5-A9ED-C758F50E7319 - 19f2c8ccecf284f8"
+                  uuid = "CA75A6D3-0DC2-46B2-8408-F206FE923053 - 23d087de6ab5846e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WeatherApp.HourlyForecastView.update(with: Swift.Array&lt;WeatherApp.HourlyWeatherModel&gt;) -&gt; ()"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in WeatherApp.SceneDelegate.sceneDidBecomeActive(__C.UIScene) -&gt; ()"
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/CustomViews/HourlyForecastView.swift"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/SceneDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "2304">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "60">
                </Location>
                <Location
-                  uuid = "20EE297E-3B0B-41D5-A9ED-C758F50E7319 - 19f2c8ccecf284f8"
+                  uuid = "CA75A6D3-0DC2-46B2-8408-F206FE923053 - 5d43d8c62762767"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WeatherApp.HourlyForecastView.update(with: Swift.Array&lt;WeatherApp.HourlyWeatherModel&gt;) -&gt; ()"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in WeatherApp.SceneDelegate.sceneDidBecomeActive(__C.UIScene) -&gt; ()"
                   moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/CustomViews/HourlyForecastView.swift"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/SceneDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "2032">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "75541976-4315-40B9-9E21-3E3CD30C615F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/CustomViews/HourlyForecastView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "draw(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTests/WeatherAppTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "WeatherAppTests"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - f016168a8107a148"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - 7afdb60d4be0f865"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - eff76eaaa44bd619"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.__allocating_init(selector: ObjectiveC.Selector) -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - 6842260a83e96285"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.init(selector: ObjectiveC.Selector) -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - fc053d8b6fb24ae7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.__allocating_init() -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - 43c82911453ea77f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.init() -&gt; WeatherAppTests.WeatherAppTests"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688 - 392cde5c09512226"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeatherAppTests.WeatherAppTests.__deallocating_deinit"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTests/WeatherAppTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "testInterpolation()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - d842e5c81b3b7612"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "192">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 97e8a6899b000419"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
                   offsetFromSymbolStart = "36">
                </Location>
                <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 609433171262aa10"
+                  uuid = "CA75A6D3-0DC2-46B2-8408-F206FE923053 - 9c7b5e07235dc070"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in WeatherApp.SceneDelegate.sceneDidBecomeActive(__C.UIScene) -&gt; ()"
+                  moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/SceneDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "88">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - b54f19cd96f64817"
+                  uuid = "CA75A6D3-0DC2-46B2-8408-F206FE923053 - 294889ec7f492e73"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in WeatherApp.SceneDelegate.sceneDidBecomeActive(__C.UIScene) -&gt; ()"
+                  moduleName = "WeatherApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/SceneDelegate.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - b54f19cd96f64817"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 609433171262aa10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 609433171262aa10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 97e8a6899b000419"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "B28E9820-88DD-413F-9359-BA4F2F53C718 - 609433171262aa10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for WeatherAppTests.WeatherAppTests.testInterpolation() async throws -&gt; ()"
-                  moduleName = "WeatherAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherAppTests/WeatherAppTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
-                  offsetFromSymbolStart = "284">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
