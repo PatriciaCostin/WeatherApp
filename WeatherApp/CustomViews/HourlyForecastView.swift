@@ -13,6 +13,7 @@ final class HourlyForecastView: UIView {
     init() {
         super.init(frame: .zero)
         setupTitle()
+        backgroundColor = UIColor(named: "SecondaryViewBackground")
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +33,7 @@ final class HourlyForecastView: UIView {
     }()
     
     private var titleView = SecondaryTitleView()
-  
+    
     private lazy var hourLabels: [UILabel] = {
         var labels = [UILabel]()
         for label in 0..<elementsCount {
@@ -114,7 +115,6 @@ final class HourlyForecastView: UIView {
             
             let temperatureLabel: UILabel = {
                 let label = temperatureView.temperatureLabel
-                label.text = "\(Int(graphPoints[i]))" + "\u{00B0}"
                 return label
             }()
             
@@ -154,11 +154,68 @@ final class HourlyForecastView: UIView {
             hourLabel.text = "\(model[index].hour)"
         }
         
-        for (index, temperatureView) in temperatureViews.enumerated() {
-            temperatureView.weatherIcon.image = UIImage(systemName: model[index].weatherIcon)
-        }
+        setupTemperatureViews(model: model)
         
         setNeedsDisplay()
+    }
+    
+    func setupTemperatureViews(model: [HourlyWeatherModel]) {
+        let paletteDayConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.day, .systemYellow, UIColor.rain])
+        let paletteDayShowerConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.day, UIColor.rain])
+        let gradientConfig = UIImage.SymbolConfiguration(hierarchicalColor: UIColor.night)
+        let paletteNightShowerConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.night, UIColor.day, UIColor.rain])
+        let paletteNightConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.night, UIColor.rain])
+        let paletteNightBoltConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.night, .systemYellow])
+        
+        for (index, temperatureView) in temperatureViews.enumerated() {
+            temperatureView.backgroundColor = UIColor(named: "SecondaryViewBackground")
+            temperatureView.weatherIcon.image = UIImage(systemName: model[index].weatherIcon)
+            temperatureView.temperatureLabel.text = model[index].temperature + "\u{00B0}"
+            
+            if model[index].partOfTheDay == "n" {
+                temperatureView.weatherIcon.tintColor = UIColor.night
+                if model[index].weatherIcon.contains(WeatherIconsString.nightClearSky) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = gradientConfig
+                } else if model[index].weatherIcon.contains(WeatherIconsString.showerRain) || model[index].weatherIcon.contains(WeatherIconsString.drizzle) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteNightConfig
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.thunderstorm) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteNightBoltConfig
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.nightRain) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteNightShowerConfig
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.snow) {
+                    temperatureView.weatherIcon.tintColor = UIColor.rain
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.nightSmoke) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = gradientConfig
+                } else if model[index].weatherIcon.contains(WeatherIconsString.nightFewClouds) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = gradientConfig
+                }
+                
+            } else if model[index].partOfTheDay == "d" {
+                temperatureView.weatherIcon.tintColor = UIColor.day
+                if model[index].weatherIcon.contains(WeatherIconsString.dayFewClouds) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteDayConfig
+                    temperatureView.weatherIcon.tintColor = .systemYellow
+                } else if model[index].weatherIcon.contains(WeatherIconsString.dayClearSky) {
+                    temperatureView.temperatureLabel.textColor = .systemYellow
+                    temperatureView.weatherIcon.tintColor = .systemYellow
+                } else if model[index].weatherIcon.contains(WeatherIconsString.dayRain) || model[index].weatherIcon.contains(WeatherIconsString.thunderstorm) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteDayConfig
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.showerRain) || model[index].weatherIcon.contains(WeatherIconsString.drizzle) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteDayShowerConfig
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.snow) {
+                    temperatureView.weatherIcon.tintColor = UIColor.rain
+                    temperatureView.temperatureLabel.textColor = UIColor.rain
+                } else if model[index].weatherIcon.contains(WeatherIconsString.daysmoke) {
+                    temperatureView.weatherIcon.preferredSymbolConfiguration = paletteDayConfig
+                }
+            }
+        }
     }
     
     func setupTitle() {
@@ -174,17 +231,25 @@ final class HourlyForecastView: UIView {
     }
 }
 
-enum WeatherIconsString: String {
-    case dayFewClouds = "cloud.sun.fill"
-    case clouds = "cloud.fill"
-    case dayClearSky = "sun.max.fill"
-    case dayRain = "cloud.sun.rain.fill"
-    case showerRain = "cloud.rain.fill"
-    case thunderstorm = "cloud.bolt.fill"
-    case snow = "snowflake"
-    case drizzle = "cloud.drizzle.fill"
-    case smoke = "sun.haze.fill"
-    case nightFewClouds = "cloud.moon.fill"
-    case nightRain = "cloud.moon.rain.fill"
-    case nightClearSky = "moon.stars.fill"
+class WeatherIconsString {
+    static let dayFewClouds = "cloud.sun.fill"
+    static let clouds = "cloud.fill"
+    static let dayClearSky = "sun.max.fill"
+    static let dayRain = "cloud.sun.rain.fill"
+    static let showerRain = "cloud.rain.fill"
+    static let thunderstorm = "cloud.bolt.fill"
+    static let snow = "snowflake"
+    static let drizzle = "cloud.drizzle.fill"
+    static let daysmoke = "sun.haze.fill"
+    static let nightSmoke = "moon.haze.fill"
+    static let nightFewClouds = "cloud.moon.fill"
+    static let nightRain = "cloud.moon.rain.fill"
+    static let nightClearSky = "moon.stars.fill"
+}
+
+class ColorNamesString {
+    static let dayColor = "dayColor"
+    static let nightColor = "nightColor"
+    static let heroBorderColor = "HeroBorderColor"
+    static let heroLightBlue = "HeroLightBlue"
 }
