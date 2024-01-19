@@ -30,13 +30,13 @@ final class SecondaryTitleView: UIView {
     var icon: UIImageView = {
         let icon = UIImageView()
         icon.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        icon.tintColor = UIColor.gray.withAlphaComponent(0.8)
+        icon.tintColor = UIColor(named: "SubtitleColor")
         return icon
     }()
     var title: UILabel = {
         let title = UILabel()
         title.font = .systemFont(ofSize: 12, weight: .semibold)
-        title.textColor = UIColor.gray.withAlphaComponent(0.8)
+        title.textColor = UIColor(named: "SubtitleColor")
         return title
     }()
     

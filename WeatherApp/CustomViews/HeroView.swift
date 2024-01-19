@@ -26,8 +26,8 @@ final class HeroView: UIView {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.colors = [
-            UIColor(named: "LightBlue")?.cgColor ?? UIColor.blue.cgColor,
-            UIColor(named: "PowderyPurple")?.cgColor ?? UIColor.purple.cgColor
+            UIColor.heroLightBlue.cgColor,
+            UIColor.heroPowderyPurple.cgColor
         ]
         gradient.locations = [0, 1]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
@@ -100,6 +100,11 @@ final class HeroView: UIView {
     private let pressureView = DetailView()
     private let humidityView = DetailView()
     private let windSpeedView = DetailView()
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.linearGradient.colors = [UIColor.heroLightBlue.cgColor, UIColor.heroPowderyPurple.cgColor]
+    }
     
     private func heroViewSetup() {
         linearGradient.frame = self.bounds

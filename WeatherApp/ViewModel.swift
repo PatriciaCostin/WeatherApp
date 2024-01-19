@@ -13,6 +13,7 @@ struct HourlyWeatherModel: Equatable {
     let hour: String
     let weatherIcon: String
     let temperature: String
+    let partOfTheDay: String
 }
 
 @MainActor
@@ -44,7 +45,7 @@ final class ViewModel{
     
     func getHourlyForecastForUserLocation() async throws {
         let locationResult = await LocationService.shared.getLocation()
-        
+        //        let locationResult = LocationService.LocationResult.authorized(CLLocation(latitude: 27, longitude: 27))
         switch locationResult {
         case .authorized(let cLLocation):
             let lat = String(cLLocation.coordinate.latitude)
@@ -60,7 +61,7 @@ final class ViewModel{
         }
     }
     
-   public func interpolateHourlyWeatherData(model: WeatherForecastModel) throws -> [HourlyWeatherModel] {
+    public func interpolateHourlyWeatherData(model: WeatherForecastModel) throws -> [HourlyWeatherModel] {
         guard !model.list.isEmpty && model.list.count > 8 else {
             throw "[WeatherForHour] is empty or has less than 8 items"
         }
@@ -68,6 +69,7 @@ final class ViewModel{
         let hoursArray = generateHoursArray(model: model.list[0])
         let temperatureArray = generateTemperatureArray(model: model.list)
         let iconsNamesArray = try generateIconsNamesArray(model: model)
+        let partOfTheDayArray = generatePartOfTheDay(model: model.list)
         
         guard hoursArray.count == forecastedItemsCount
                 && temperatureArray.count == forecastedItemsCount
@@ -77,11 +79,27 @@ final class ViewModel{
         }
         
         var hourlyWeatherModels = [HourlyWeatherModel]()
-        for (hour, iconName, temperature) in zip3(hoursArray, iconsNamesArray, temperatureArray) {
-            let model = HourlyWeatherModel(hour: hour, weatherIcon: iconName, temperature: temperature)
+        for (hour, iconName, temperature, partOfTheDay) in zip3(hoursArray, iconsNamesArray, temperatureArray, partOfTheDayArray) {
+            let model = HourlyWeatherModel(
+                hour: hour,
+                weatherIcon: iconName,
+                temperature: temperature,
+                partOfTheDay: partOfTheDay
+            )
             hourlyWeatherModels.append(model)
         }
         return hourlyWeatherModels
+    }
+    
+    private func generatePartOfTheDay(model: [WeatherForHour]) -> [String] {
+        var partOfTheDayArray = [String]()
+        
+        for weatherForHour in model {
+            for _ in 0..<3 {
+                partOfTheDayArray.append(weatherForHour.sys.partOfTheDay)
+            }
+        }
+        return partOfTheDayArray
     }
     
     private func generateTemperatureArray(model: [WeatherForHour]) -> [String] {
@@ -93,7 +111,17 @@ final class ViewModel{
                                                                   using: controlVector)
             .map { ceil($0) }
         
-        return interpolatedTemperatureArray.map { String(Int($0)) }
+        return interpolatedTemperatureArray.map { String(safeIntConversion($0)) }
+    }
+    
+    private func safeIntConversion(_ value: Double) -> Int {
+        if value > Double(Int.max) {
+            return Int.max
+        } else if value < Double(Int.min) {
+            return Int.min
+        } else {
+            return Int(value)
+        }
     }
     
     
@@ -103,7 +131,7 @@ final class ViewModel{
         dateFormatter.dateFormat = "HH"
         let hourString = dateFormatter.string(from: restoredDate)
         
-        var hourInt = Int(hourString) ?? 0
+        let hourInt = Int(hourString) ?? 0
         
         var hourForecastArray = [Int]()
         if hourInt <= 23 {
@@ -170,36 +198,36 @@ final class ViewModel{
             if description.contains("clouds") {
                 if description.contains("few clouds") {
                     if hoursOfDay.contains(index) {
-                        iconsNamesArray.append(WeatherIconsString.dayFewClouds.rawValue)
+                        iconsNamesArray.append(WeatherIconsString.dayFewClouds)
                     } else if hoursOfNight.contains(index) {
-                        iconsNamesArray.append(WeatherIconsString.nightFewClouds.rawValue)
+                        iconsNamesArray.append(WeatherIconsString.nightFewClouds)
                     }
                 } else {
-                    iconsNamesArray.append(WeatherIconsString.clouds.rawValue)
+                    iconsNamesArray.append(WeatherIconsString.clouds)
                 }
             } else if description.contains("clear sky") {
                 if hoursOfDay.contains(index) {
-                    iconsNamesArray.append(WeatherIconsString.dayClearSky.rawValue)
+                    iconsNamesArray.append(WeatherIconsString.dayClearSky)
                 } else if hoursOfNight.contains(index) {
-                    iconsNamesArray.append(WeatherIconsString.nightClearSky.rawValue)
+                    iconsNamesArray.append(WeatherIconsString.nightClearSky)
                 }
             } else if description.contains("rain") {
                 if description.contains("shower") {
-                    iconsNamesArray.append(WeatherIconsString.showerRain.rawValue)
+                    iconsNamesArray.append(WeatherIconsString.showerRain)
                 } else {
                     if hoursOfDay.contains(index) {
-                        iconsNamesArray.append(WeatherIconsString.dayRain.rawValue)
+                        iconsNamesArray.append(WeatherIconsString.dayRain)
                     } else if hoursOfNight.contains(index) {
-                        iconsNamesArray.append(WeatherIconsString.nightRain.rawValue)
+                        iconsNamesArray.append(WeatherIconsString.nightRain)
                     }
                 }
             }
             else if description.contains("thunderstorm") {
-                iconsNamesArray.append(WeatherIconsString.thunderstorm.rawValue)
+                iconsNamesArray.append(WeatherIconsString.thunderstorm)
             } else if description.contains("snow") {
-                iconsNamesArray.append(WeatherIconsString.snow.rawValue)
+                iconsNamesArray.append(WeatherIconsString.snow)
             } else if description.contains("drizzle") {
-                iconsNamesArray.append(WeatherIconsString.drizzle.rawValue)
+                iconsNamesArray.append(WeatherIconsString.drizzle)
             } else if description.contains("smoke")
                         || description.contains("mist")
                         || description.contains("haze")
@@ -208,7 +236,11 @@ final class ViewModel{
                         || description.contains("tornado")
                         || description.contains("squalls")
                         || description.contains("sleet") {
-                iconsNamesArray.append(WeatherIconsString.smoke.rawValue)
+                if hoursOfDay.contains(index) {
+                    iconsNamesArray.append(WeatherIconsString.daysmoke)
+                } else if hoursOfNight.contains(index) {
+                    iconsNamesArray.append(WeatherIconsString.nightSmoke)
+                }
             }
         }
         return iconsNamesArray

@@ -21,7 +21,7 @@
         {
           "id": 801,
           "main": "Clouds",
-          "description": "few clouds",
+          "description": "smoke",
           "icon": "02d"
         }
       ],
@@ -57,7 +57,7 @@
         {
           "id": 803,
           "main": "Clouds",
-          "description": "broken clouds",
+          "description": "smoke",
           "icon": "04d"
         }
       ],
@@ -93,7 +93,7 @@
         {
           "id": 803,
           "main": "Clouds",
-          "description": "broken clouds",
+          "description": "snow",
           "icon": "04n"
         }
       ],
@@ -129,7 +129,7 @@
         {
           "id": 802,
           "main": "Clouds",
-          "description": "scattered clouds",
+          "description": "drizzle",
           "icon": "03n"
         }
       ],
@@ -165,7 +165,7 @@
         {
           "id": 801,
           "main": "Clouds",
-          "description": "few clouds",
+          "description": "rain",
           "icon": "02n"
         }
       ],
@@ -237,7 +237,7 @@
         {
           "id": 802,
           "main": "Clouds",
-          "description": "scattered clouds",
+          "description": "drizzle",
           "icon": "03n"
         }
       ],
@@ -273,7 +273,7 @@
         {
           "id": 803,
           "main": "Clouds",
-          "description": "broken clouds",
+          "description": "drizzle",
           "icon": "04d"
         }
       ],
