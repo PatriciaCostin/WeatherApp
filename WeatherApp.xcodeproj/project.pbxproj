@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4D2BB7FB2B4AE7E3000E78D7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2BB7FA2B4AE7E3000E78D7 /* ActivityIndicator.swift */; };
+		4D5889F22B6039AC00D5D3B4 /* ChartsSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5889F12B6039AC00D5D3B4 /* ChartsSwiftUI.swift */; };
+		4D5889F42B6040C200D5D3B4 /* TrialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5889F32B6040C200D5D3B4 /* TrialViewModel.swift */; };
 		4D8FE8A52B4C197A00A8A30F /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FE8A42B4C197A00A8A30F /* HourlyForecastView.swift */; };
 		4D8FE8A92B5148E900A8A30F /* SecondaryTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FE8A82B5148E900A8A30F /* SecondaryTitleView.swift */; };
 		4D8FE8AB2B51898800A8A30F /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FE8AA2B51898800A8A30F /* TemperatureView.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		4D2BB7FA2B4AE7E3000E78D7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		4D5889F12B6039AC00D5D3B4 /* ChartsSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSwiftUI.swift; sourceTree = "<group>"; };
+		4D5889F32B6040C200D5D3B4 /* TrialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialViewModel.swift; sourceTree = "<group>"; };
 		4D8FE8A42B4C197A00A8A30F /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		4D8FE8A82B5148E900A8A30F /* SecondaryTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleView.swift; sourceTree = "<group>"; };
 		4D8FE8AA2B51898800A8A30F /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				4DB2AD342B42EE5700379A3E /* ViewModel.swift */,
+				4D5889F12B6039AC00D5D3B4 /* ChartsSwiftUI.swift */,
+				4D5889F32B6040C200D5D3B4 /* TrialViewModel.swift */,
 				4DB2AD322B42EE5200379A3E /* ViewController.swift */,
 				4DB2AD1B2B42EE1300379A3E /* AppDelegate.swift */,
 				4DB2AD1D2B42EE1300379A3E /* SceneDelegate.swift */,
@@ -282,6 +288,7 @@
 				4DB2AD4A2B4327B100379A3E /* LocationService.swift in Sources */,
 				4DB2AD3F2B42EE6900379A3E /* NetworkManager.swift in Sources */,
 				4DB2AD332B42EE5200379A3E /* ViewController.swift in Sources */,
+				4D5889F22B6039AC00D5D3B4 /* ChartsSwiftUI.swift in Sources */,
 				4DB2AD1C2B42EE1300379A3E /* AppDelegate.swift in Sources */,
 				4D9E17712B593FA500739920 /* Zip3Sequence.swift in Sources */,
 				4D2BB7FB2B4AE7E3000E78D7 /* ActivityIndicator.swift in Sources */,
@@ -297,6 +304,7 @@
 				4DB2AD422B42EE6900379A3E /* NetworkError.swift in Sources */,
 				4D8FE8A52B4C197A00A8A30F /* HourlyForecastView.swift in Sources */,
 				4DB2AD1E2B42EE1300379A3E /* SceneDelegate.swift in Sources */,
+				4D5889F42B6040C200D5D3B4 /* TrialViewModel.swift in Sources */,
 				4DB2AD402B42EE6900379A3E /* WeatherForecastModel.swift in Sources */,
 				4D8FE8AF2B53B97D00A8A30F /* WeatherServiceMock.swift in Sources */,
 			);
