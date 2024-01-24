@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "75541976-4315-40B9-9E21-3E3CD30C615F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/CustomViews/HourlyForecastView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "draw(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "918D0E37-55BF-480B-9C2A-BEAF8D76B688"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -299,94 +283,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2"
+            uuid = "02FE7630-ACEA-4F87-8BC0-F076E384AF61"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherApp/ViewModel.swift"
+            filePath = "WeatherApp/TrialViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getHourlyForecastForUserLocation()"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "createDayDescriptionsArrays(model:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2 - 3734b894f63267ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for WeatherApp.ViewModel.getHourlyForecastForUserLocation() async throws -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/ViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "504">
-               </Location>
-               <Location
-                  uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2 - 66d901cd4f9b0bbe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) await resume partial function for WeatherApp.ViewModel.getHourlyForecastForUserLocation() async throws -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/ViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2 - 1e0d1c574003a3a5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for WeatherApp.ViewModel.getHourlyForecastForUserLocation() async throws -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/ViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "116">
-               </Location>
-               <Location
-                  uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2 - 9fa2fb667747c05"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for WeatherApp.ViewModel.getHourlyForecastForUserLocation() async throws -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/ViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "69C717E2-89AB-4DAB-9BC1-2130F755D7C2 - 9fa2fb667747da6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for WeatherApp.ViewModel.getHourlyForecastForUserLocation() async throws -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/ViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

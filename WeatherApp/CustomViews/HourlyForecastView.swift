@@ -13,7 +13,7 @@ final class HourlyForecastView: UIView {
     init() {
         super.init(frame: .zero)
         setupTitle()
-        backgroundColor = UIColor(named: "SecondaryViewBackground")
+        backgroundColor = UIColor.secondaryViewBackground
     }
     
     required init?(coder: NSCoder) {
@@ -168,7 +168,7 @@ final class HourlyForecastView: UIView {
         let paletteNightBoltConfig = UIImage.SymbolConfiguration.init(paletteColors: [UIColor.night, .systemYellow])
         
         for (index, temperatureView) in temperatureViews.enumerated() {
-            temperatureView.backgroundColor = UIColor(named: "SecondaryViewBackground")
+            temperatureView.backgroundColor = UIColor.secondaryViewBackground
             temperatureView.weatherIcon.image = UIImage(systemName: model[index].weatherIcon)
             temperatureView.temperatureLabel.text = model[index].temperature + "\u{00B0}"
             
