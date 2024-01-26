@@ -44,8 +44,8 @@ final class ViewModel{
     }
     
     func getHourlyForecastForUserLocation() async throws {
-       // let locationResult = await LocationService.shared.getLocation()
-        let locationResult = LocationService.LocationResult.authorized(CLLocation(latitude: 47.0105, longitude: 28.8638))
+        let locationResult = await LocationService.shared.getLocation()
+     //   let locationResult = LocationService.LocationResult.authorized(CLLocation(latitude: 47.0105, longitude: 28.8638))
         switch locationResult {
         case .authorized(let cLLocation):
             let lat = String(cLLocation.coordinate.latitude)
@@ -111,8 +111,6 @@ final class ViewModel{
                                                                   using: controlVector)
             .map { ceil($0) }
         
-     //   print(interpolatedTemperatureArray.map { String(safeIntConversion($0)) })
-        
         return interpolatedTemperatureArray.map { String(safeIntConversion($0)) }
     }
     
@@ -149,7 +147,7 @@ final class ViewModel{
                 hourForecastArray.append(hour)
             }
         }
-        //print(hourForecastArray.map { String(format: "%02d", $0) })
+        
         return hourForecastArray.map { String(format: "%02d", $0) }
     }
     

@@ -8,9 +8,8 @@
 import SwiftUI
 import Charts
 
-struct ContentView: View {
-    @StateObject var viewModel = TrialViewModel()
-    
+struct WeeklyForecastView: View {
+    @StateObject var viewModel = WeeklyForecastViewModel()
     
     @available(iOS 15.0, *)
     var body: some View {
@@ -44,14 +43,13 @@ struct ContentView: View {
                 }
                 
                 if let nightTemp = data.nightTimeTemp, 
-                    let dayWeek = data.nightTimeWeekDat,
-                   let alteratedTemp = data.ateratedNightTimeTemp
+                    let dayWeek = data.nightTimeWeekDay
                 {
                     LineMark(x: .value("hours", dayWeek),
-                             y: .value("temp", alteratedTemp))
+                             y: .value("temp", nightTemp - 10))
                     .foregroundStyle(by: .value("PartOfDay", "night"))
                     PointMark(x: .value("hours", dayWeek),
-                              y: .value("temp", alteratedTemp)
+                              y: .value("temp", nightTemp - 10)
                     )
                     .foregroundStyle(by: .value("PartOfDay", "night"))
                     
@@ -73,11 +71,19 @@ struct ContentView: View {
                     }
                 }
             }
+            .chartXAxis {
+                AxisMarks {
+                    AxisValueLabel()
+                    AxisGridLine(stroke: StrokeStyle(lineWidth: 0))
+                 //   AxisMarkPreset()
+                }
+            }
+            .chartYAxis(.hidden)
+            .chartLegend(.hidden)
             .onAppear {
-                viewModel.loadModel()
                 Task {
                     do {
-                        try await viewModel.getHourlyForecastForUserLocation()
+                        try await viewModel.getWeeklyForecastForUserLocation()
                     } catch {
                         // Handle the error appropriately, e.g., show an alert or log the error
                         print("Error fetching hourly forecast: \(error)")
@@ -91,5 +97,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    WeeklyForecastView()
 }
