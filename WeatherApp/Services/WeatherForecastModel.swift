@@ -5,6 +5,8 @@
 //  Created by Patricia Costin on 29.12.2023.
 //
 
+import Foundation
+
 struct WeatherForecastModel: Codable {
     var cod: String
     var message: Int
@@ -36,6 +38,13 @@ struct WeatherForHour: Codable {
         case rain
         case sys
         case timeOfDataForecasted = "dt_txt"
+    }
+    
+    var weekDay: String {
+        let restoredDate = Date(timeIntervalSince1970: TimeInterval(unixTimeStamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return dateFormatter.string(from: restoredDate)
     }
 }
 

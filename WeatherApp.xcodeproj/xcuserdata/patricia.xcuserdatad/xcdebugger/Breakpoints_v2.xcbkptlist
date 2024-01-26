@@ -290,10 +290,42 @@
             filePath = "WeatherApp/TrialViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "createDayDescriptionsArrays(model:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "02FE7630-ACEA-4F87-8BC0-F076E384AF61 - fed81c79e15192d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.TrialViewModel.createDayDescriptionsArrays(model: WeatherApp.WeatherForecastModel) -&gt; WeatherApp.PartOfTheDayDescription"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/TrialViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "02FE7630-ACEA-4F87-8BC0-F076E384AF61 - fed81c79e1518eb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.TrialViewModel.createDayDescriptionsArrays(model: WeatherApp.WeatherForecastModel) -&gt; WeatherApp.PartOfTheDayDescription"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/TrialViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
