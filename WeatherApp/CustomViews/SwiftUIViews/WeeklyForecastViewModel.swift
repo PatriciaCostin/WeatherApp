@@ -124,6 +124,7 @@ class WeeklyForecastViewModel: ObservableObject {
                     
                     // Append the maximum temperature for night time
                     dayTemps.append(Int(model.list[dayIndex].main.tempMin.celsiusFromKelvinValue))
+
                     // Append only one weekDay name (its gonna be the same for all forecasts for a particular night)
                     if weekDay.count == 0 {
                         let currentWeekDay = model.list[dayIndex].weekDay
@@ -151,7 +152,6 @@ class WeeklyForecastViewModel: ObservableObject {
             }
         }
         
-        print(nightMinTemp)
         return PartOfTheDayDescription(
             temperatures: nightMinTemp,
             weekDays: weekDaysForNightTimeForecasts,
@@ -206,7 +206,7 @@ class WeeklyForecastViewModel: ObservableObject {
             }
             
             // After collecting data from the forecasts for a day, only the max temperature, the unduplicated week name and one icon name will be added to the arrays that will be returned.
-            
+
             if dayTemps.count >= 1 {
                 daysMaxTemp.append(dayTemps.max() ?? 0)
             }
@@ -299,7 +299,6 @@ class WeeklyForecastViewModel: ObservableObject {
             for day in weekDaysForNightTime {
                 forecastedWeekDays.append(day)
             }
-            
             print("Error: weekDaysForDayTimeForecasts[1] == weekDaysForNightTimeForecasts[0] ")
         }
         
@@ -322,6 +321,3 @@ struct PartOfTheDayDescription {
     var weekDays: [String]
     var iconNames: [String]
 }
-
-
-
