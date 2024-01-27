@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Zip3Sequence<E1, E2, E3, E4>: Sequence, IteratorProtocol {
+struct Zip4Sequence<E1, E2, E3, E4>: Sequence, IteratorProtocol {
     private let _next: () -> (E1, E2, E3, E4)?
 
     init<S1: Sequence, S2: Sequence, S3: Sequence, S4: Sequence>(_ s1: S1, _ s2: S2, _ s3: S3, _ s4: S4) where S1.Element == E1, S2.Element == E2, S3.Element == E3, S4.Element == E4 {
@@ -26,6 +26,6 @@ struct Zip3Sequence<E1, E2, E3, E4>: Sequence, IteratorProtocol {
     }
 }
 
-func zip3<S1: Sequence, S2: Sequence, S3: Sequence, S4: Sequence>(_ s1: S1, _ s2: S2, _ s3: S3, _ s4: S4) -> Zip3Sequence<S1.Element, S2.Element, S3.Element, S4.Element> {
-    return Zip3Sequence(s1, s2, s3, s4)
+func zip4<S1: Sequence, S2: Sequence, S3: Sequence, S4: Sequence>(_ s1: S1, _ s2: S2, _ s3: S3, _ s4: S4) -> Zip4Sequence<S1.Element, S2.Element, S3.Element, S4.Element> {
+    return Zip4Sequence(s1, s2, s3, s4)
 }

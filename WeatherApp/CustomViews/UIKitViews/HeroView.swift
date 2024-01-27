@@ -25,11 +25,7 @@ final class HeroView: UIView {
     private lazy var linearGradient: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.type = .axial
-        gradient.colors = [
-            UIColor.heroLightBlue.cgColor,
-            UIColor.heroPowderyPurple.cgColor
-        ]
-        gradient.locations = [0, 1]
+        gradient.locations = [0, 0.7, 1]
         gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradient.cornerRadius = 20
@@ -41,7 +37,7 @@ final class HeroView: UIView {
         cityLabel.textAlignment = .center
         cityLabel.text = "Chisinau Municipality"
         cityLabel.textColor = .white.withAlphaComponent(0.8)
-        cityLabel.font = .systemFont(ofSize: 25, weight: .semibold)
+        cityLabel.font = .systemFont(ofSize: FontSizes.cityLabel, weight: .semibold)
         return cityLabel
     }()
     
@@ -50,7 +46,7 @@ final class HeroView: UIView {
         temperatureLabel.textAlignment = .center
         temperatureLabel.text = "0"
         temperatureLabel.textColor = .white
-        temperatureLabel.font = .systemFont(ofSize: 100, weight: .heavy)
+        temperatureLabel.font = .systemFont(ofSize: FontSizes.currentTemperature, weight: .heavy)
         return temperatureLabel
     }()
     
@@ -59,7 +55,7 @@ final class HeroView: UIView {
         feelsLikeLabel.textAlignment = .center
         feelsLikeLabel.text = "Feels like 1 C"
         feelsLikeLabel.textColor = .white
-        feelsLikeLabel.font = .systemFont(ofSize: 20, weight: .medium)
+        feelsLikeLabel.font = .systemFont(ofSize: FontSizes.currentWeatherIndices, weight: .medium)
         return feelsLikeLabel
     }()
     
@@ -82,7 +78,7 @@ final class HeroView: UIView {
     private let horizontalStack: UIStackView = {
         let horizontalStack = UIStackView()
         horizontalStack.axis = .horizontal
-        horizontalStack.distribution = .fillEqually
+        horizontalStack.distribution = .fillProportionally
         horizontalStack.alignment = .center
         return horizontalStack
     }()
@@ -92,7 +88,7 @@ final class HeroView: UIView {
         celsiusLabel.text = "\u{00B0}"
         celsiusLabel.textAlignment = .center
         celsiusLabel.textColor = .white
-        celsiusLabel.font = .systemFont(ofSize: 40, weight: .bold)
+        celsiusLabel.font = .systemFont(ofSize: FontSizes.celsius, weight: .bold)
         return celsiusLabel
     }()
     
@@ -103,13 +99,13 @@ final class HeroView: UIView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        self.linearGradient.colors = [UIColor.heroLightBlue.cgColor, UIColor.heroPowderyPurple.cgColor]
+        self.linearGradient.colors = [UIColor.lightYellow.cgColor, UIColor.powderyPurple.cgColor]
     }
     
     private func heroViewSetup() {
         linearGradient.frame = self.bounds
         self.layer.insertSublayer(linearGradient, at: 0)
-        
+
         addSubview(cityLabel)
         addSubview(temperatureView)
         addSubview(feelsLikeLabel)
@@ -131,7 +127,7 @@ final class HeroView: UIView {
         separator.translatesAutoresizingMaskIntoConstraints = false
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([       
             cityLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             cityLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
             cityLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -176,8 +172,8 @@ final class HeroView: UIView {
     }
     
     func setInitialValuesDetailView() {
-        pressureView.iconView.image = UIImage(systemName: "barometer")?.withTintColor(.white.withAlphaComponent(0.8),
-                                                                                      renderingMode: .alwaysOriginal)
+        pressureView.iconView.image = UIImage(systemName: "barometer")?
+            .withTintColor(.white.withAlphaComponent(0.8), renderingMode: .alwaysOriginal)
         pressureView.propertyLabel.text = "Pressure"
         pressureView.descriptorLabel.text = "1000 hPa"
         

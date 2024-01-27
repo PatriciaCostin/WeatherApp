@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SecondaryTitleView: UIView {
+final class HourlyForecastTitleView: UIView {
     
     init() {
         super.init(frame: .zero)
@@ -31,12 +31,14 @@ final class SecondaryTitleView: UIView {
         let icon = UIImageView()
         icon.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         icon.tintColor = UIColor.subtitle
+        icon.image = UIImage(systemName: "clock")
         return icon
     }()
     var title: UILabel = {
         let title = UILabel()
-        title.font = .systemFont(ofSize: 12, weight: .semibold)
+        title.font = .systemFont(ofSize: FontSizes.subtitle, weight: .semibold)
         title.textColor = UIColor.subtitle
+        title.text = "HOURLY FORECAST"
         return title
     }()
     

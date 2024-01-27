@@ -46,6 +46,14 @@ struct WeatherForHour: Codable {
         dateFormatter.dateFormat = "E"
         return dateFormatter.string(from: restoredDate)
     }
+    
+    var isDay: Bool {
+        sys.partOfTheDay == "d"
+    }
+    
+    var isNight: Bool {
+        sys.partOfTheDay == "n"
+    }
 }
 
 struct WeatherForHourDetails: Codable {

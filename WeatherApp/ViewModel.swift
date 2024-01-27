@@ -79,7 +79,7 @@ final class ViewModel{
         }
         
         var hourlyWeatherModels = [HourlyWeatherModel]()
-        for (hour, iconName, temperature, partOfTheDay) in zip3(hoursArray, iconsNamesArray, temperatureArray, partOfTheDayArray) {
+        for (hour, iconName, temperature, partOfTheDay) in zip4(hoursArray, iconsNamesArray, temperatureArray, partOfTheDayArray) {
             let model = HourlyWeatherModel(
                 hour: hour,
                 weatherIcon: iconName,
@@ -147,7 +147,6 @@ final class ViewModel{
                 hourForecastArray.append(hour)
             }
         }
-        
         return hourForecastArray.map { String(format: "%02d", $0) }
     }
     

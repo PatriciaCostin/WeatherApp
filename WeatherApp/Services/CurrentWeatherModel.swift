@@ -16,7 +16,7 @@ struct CurrentWeatherModel: Codable {
     var rain: RainProbability?
     var clouds: CloudsDetails
     var dt: Int
-    var sys: InternalParameters
+    var sys: InternalParameters?
     var timezone: Int
     var id: Int
     var name: String

@@ -12,7 +12,7 @@ final class HourlyForecastView: UIView {
     
     init() {
         super.init(frame: .zero)
-        setupTitle()
+        //setupTitle()
         backgroundColor = UIColor.secondaryViewBackground
     }
     
@@ -32,13 +32,13 @@ final class HourlyForecastView: UIView {
         return temperatureViews
     }()
     
-    private var titleView = SecondaryTitleView()
+    private var titleView = HourlyForecastTitleView()
     
     private lazy var hourLabels: [UILabel] = {
         var labels = [UILabel]()
         for label in 0..<elementsCount {
             var label = UILabel()
-            label.font = .systemFont(ofSize: 10)
+            label.font = .systemFont(ofSize: FontSizes.hourLabel)
             label.textAlignment = .center
             labels.append(label)
         }
@@ -86,7 +86,7 @@ final class HourlyForecastView: UIView {
         
         // Set up the points line
         let graphPath = UIBezierPath()
-        graphPath.lineWidth = 2.0
+        graphPath.lineWidth = 2.5
         
         // Go to start of line
         graphPath.move(to: CGPoint(x: columnXPoint(0), y: columnYPoint(Int(graphPoints[0]))))
@@ -102,6 +102,8 @@ final class HourlyForecastView: UIView {
         setupTemperatureViewsforGhraph(columnXPoint: columnXPoint, columnYPoint: columnYPoint)
         setupHourLabels()
         
+        
+
     }
     
     func setupTemperatureViewsforGhraph(columnXPoint: (Int) -> CGFloat, columnYPoint: (Int) -> CGFloat) {
@@ -132,7 +134,7 @@ final class HourlyForecastView: UIView {
     func setupHourLabels() {
         for (index, label) in hourLabels.enumerated() {
             self.addSubview(label)
-            label.font = .systemFont(ofSize: 12, weight: .semibold)
+            label.font = .systemFont(ofSize: FontSizes.subtitle, weight: .semibold)
             label.textColor = UIColor.gray.withAlphaComponent(0.8)
             label.translatesAutoresizingMaskIntoConstraints = false
             
@@ -245,11 +247,4 @@ class WeatherIconsString {
     static let nightFewClouds = "cloud.moon.fill"
     static let nightRain = "cloud.moon.rain.fill"
     static let nightClearSky = "moon.stars.fill"
-}
-
-class ColorNamesString {
-    static let dayColor = "dayColor"
-    static let nightColor = "nightColor"
-    static let heroBorderColor = "HeroBorderColor"
-    static let heroLightBlue = "HeroLightBlue"
 }
