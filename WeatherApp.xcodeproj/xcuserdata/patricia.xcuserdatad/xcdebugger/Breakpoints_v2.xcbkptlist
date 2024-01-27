@@ -328,5 +328,68 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98A65B4A-FB15-44F5-AF5A-D63C150BE982"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/CustomViews/SwiftUIViews/WeeklyForecastViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "index"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "98A65B4A-FB15-44F5-AF5A-D63C150BE982 - 356424ae6e6e1898"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.WeeklyForecastViewModel.index.didset : Swift.Int"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/CustomViews/SwiftUIViews/WeeklyForecastViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "98A65B4A-FB15-44F5-AF5A-D63C150BE982 - 356424ae6e6e1898"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.WeeklyForecastViewModel.index.didset : Swift.Int"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/CustomViews/SwiftUIViews/WeeklyForecastViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  uuid = "98A65B4A-FB15-44F5-AF5A-D63C150BE982 - 356424ae6e6e1898"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.WeeklyForecastViewModel.index.didset : Swift.Int"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patricia/Dev/WeatherApp/WeatherApp/CustomViews/SwiftUIViews/WeeklyForecastViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "472">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -46,7 +46,7 @@ final class DetailView: UIView {
         let propertyLabel = UILabel()
         propertyLabel.textAlignment = .center
         propertyLabel.textColor = .white.withAlphaComponent(0.8)
-        propertyLabel.font = .systemFont(ofSize: 15, weight: .semibold)
+        propertyLabel.font = .systemFont(ofSize: FontSizes.heroViewSubtitle, weight: .semibold)
         return propertyLabel
     }()
     
@@ -54,7 +54,7 @@ final class DetailView: UIView {
         let descriptorLabel = UILabel()
         descriptorLabel.textAlignment = .center
         descriptorLabel.textColor = .white
-        descriptorLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        descriptorLabel.font = .systemFont(ofSize: FontSizes.currentWeatherIndices, weight: .semibold)
         return descriptorLabel
     }()
     

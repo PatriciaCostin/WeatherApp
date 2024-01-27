@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Combine
 import CoreLocation
 import Collections
 
@@ -15,11 +14,21 @@ import Collections
 @MainActor
 class WeeklyForecastViewModel: ObservableObject {
     @Published var weatherModels: [DailyForecast] = []
+    @Published var firstWeatherModel: DailyForecast?
     private let weatherService = WeatherServiceImp()
+    var index = 0 {
+        didSet {
+            if index < weatherModels.count {
+                firstWeatherModel = weatherModels[index]
+            } else {
+                firstWeatherModel = nil
+            }
+        }
+    }
     
     func getWeeklyForecastForUserLocation() async throws {
         let locationResult = await LocationService.shared.getLocation()
-       // let locationResult = LocationService.LocationResult.authorized(CLLocation(latitude: 47.0105, longitude: 28.8638))
+        //let locationResult = LocationService.LocationResult.authorized(CLLocation(latitude: 47.0105, longitude: 28.8638))
         switch locationResult {
         case .authorized(let cLLocation):
             let lat = String(cLLocation.coordinate.latitude)
@@ -28,6 +37,7 @@ class WeeklyForecastViewModel: ObservableObject {
             let day = createDayDescriptions(model: model)
             let night = createNightDescriptions(model: model)
             weatherModels = createDailyForecasts(dayDescriptions: day, nightDescriptions: night)
+            firstWeatherModel = weatherModels.first
         case .userDenied:
             throw "User denied"
         case .osRestricted:
@@ -44,12 +54,40 @@ class WeeklyForecastViewModel: ObservableObject {
         let nightMinTemperatures = nightDescriptions.temperatures
         let weekDaysForNightTimeForecasts = nightDescriptions.weekDays
         let iconNamesForNightTimeForecasts = nightDescriptions.iconNames
+        var alteredNightTemperatures = [Int]()
+        let nightHumidityForecasts = nightDescriptions.humidity
+        let nightPressureForecasts = nightDescriptions.pressure
+        let nightWindSpeedForecasts = nightDescriptions.windSpeed
+        let nightVisibilityForecasts = nightDescriptions.visibility
+        let nightCloudinessForecasts = nightDescriptions.cloudiness
+        let nightPosibilityOfPrecipitationForecast = nightDescriptions.posibilityOfPrecipitation
         
         let daysMaxTemperatures = dayDescriptions.temperatures
         let weekDaysForDayTimeForecasts = dayDescriptions.weekDays
         let iconNamesForDayTimeForecasts = dayDescriptions.iconNames
+        var alteredDayTemperatures = [Int]()
+        let dayHumidityForecasts = dayDescriptions.humidity
+        let dayPressureForecasts = dayDescriptions.pressure
+        let dayWindSpeedForecasts = dayDescriptions.windSpeed
+        let dayVisibilityForecasts = dayDescriptions.visibility
+        let dayCloudinessForecasts = dayDescriptions.cloudiness
+        let dayPosibilityOfPrecipitationForecast = dayDescriptions.posibilityOfPrecipitation
         
-        let forecastedWeekDays = createForecastedWeekDays(weekDaysForDayTime: weekDaysForDayTimeForecasts, weekDaysForNightTime: weekDaysForNightTimeForecasts)
+        //If dayTime and nightTime temperatures are all above 0, we should alter the values by extracting from each values the lowest temperature so our graph could have the lowest temperatures at the bottom. If we don't do so, the views for each forecast will be displayed at some distance from the bottom, because they are greater than 0.
+        let allTemperatures = daysMaxTemperatures + nightMinTemperatures
+        
+        if allTemperatures.count == allTemperatures.filter({ $0 > 0}).count {
+            alteredDayTemperatures = daysMaxTemperatures.map { $0 - (allTemperatures.min() ?? 0)}
+            alteredNightTemperatures = nightMinTemperatures.map { $0 - (allTemperatures.min() ?? 0)}
+        } else {
+            alteredDayTemperatures = daysMaxTemperatures
+            alteredNightTemperatures = nightMinTemperatures
+        }
+        
+        let forecastedWeekDays = createForecastedWeekDays(
+            weekDaysForDayTime: weekDaysForDayTimeForecasts,
+            weekDaysForNightTime: weekDaysForNightTimeForecasts
+        )
         
         return forecastedWeekDays.map { weekDay in
             let dayIndex = weekDaysForDayTimeForecasts.firstIndex(of: weekDay) ?? 0
@@ -61,9 +99,17 @@ class WeeklyForecastViewModel: ObservableObject {
                     dayTimeWeekDay: weekDaysForDayTimeForecasts[dayIndex],
                     dayTimeTemp: daysMaxTemperatures[dayIndex],
                     dayTimeIcon: iconNamesForDayTimeForecasts[dayIndex],
+                    alteredDayTimeTemp: alteredDayTemperatures[dayIndex],
                     nightTimeWeekDay: weekDaysForNightTimeForecasts[nightIndex],
                     nightTimeTemp: nightMinTemperatures[nightIndex],
-                    nightTimeIcon: iconNamesForNightTimeForecasts[nightIndex]
+                    nightTimeIcon: iconNamesForNightTimeForecasts[nightIndex],
+                    alteredNightTimeTemp: alteredNightTemperatures[nightIndex],
+                    humidity: dayHumidityForecasts[dayIndex],
+                    pressure: dayPressureForecasts[dayIndex],
+                    windSpeed: dayWindSpeedForecasts[dayIndex],
+                    visibility: dayVisibilityForecasts[dayIndex],
+                    cloudiness: dayCloudinessForecasts[dayIndex],
+                    posibilityOfPrecipitation: dayPosibilityOfPrecipitationForecast[dayIndex]
                 )
             } else if !weekDaysForDayTimeForecasts.contains(weekDay) &&
                         weekDaysForNightTimeForecasts.contains(weekDay) {
@@ -71,9 +117,17 @@ class WeeklyForecastViewModel: ObservableObject {
                     dayTimeWeekDay: nil,
                     dayTimeTemp: nil,
                     dayTimeIcon: nil,
+                    alteredDayTimeTemp: nil,
                     nightTimeWeekDay: weekDaysForNightTimeForecasts[nightIndex],
                     nightTimeTemp: nightMinTemperatures[nightIndex],
-                    nightTimeIcon: iconNamesForNightTimeForecasts[nightIndex]
+                    nightTimeIcon: iconNamesForNightTimeForecasts[nightIndex],
+                    alteredNightTimeTemp: alteredNightTemperatures[nightIndex],
+                    humidity: nightHumidityForecasts[nightIndex],
+                    pressure: nightPressureForecasts[nightIndex],
+                    windSpeed: nightWindSpeedForecasts[nightIndex],
+                    visibility: nightVisibilityForecasts[nightIndex],
+                    cloudiness: nightCloudinessForecasts[nightIndex],
+                    posibilityOfPrecipitation: nightPosibilityOfPrecipitationForecast[nightIndex]
                 )
             } else if weekDaysForDayTimeForecasts.contains(weekDay) &&
                         !weekDaysForNightTimeForecasts.contains(weekDay) {
@@ -81,9 +135,17 @@ class WeeklyForecastViewModel: ObservableObject {
                     dayTimeWeekDay: weekDaysForDayTimeForecasts[dayIndex],
                     dayTimeTemp: daysMaxTemperatures[dayIndex],
                     dayTimeIcon: iconNamesForDayTimeForecasts[dayIndex],
+                    alteredDayTimeTemp: alteredDayTemperatures[dayIndex],
                     nightTimeWeekDay: nil,
                     nightTimeTemp: nil,
-                    nightTimeIcon: nil
+                    nightTimeIcon: nil,
+                    alteredNightTimeTemp: nil,
+                    humidity: dayHumidityForecasts[dayIndex],
+                    pressure: dayPressureForecasts[dayIndex],
+                    windSpeed: dayWindSpeedForecasts[dayIndex],
+                    visibility: dayVisibilityForecasts[dayIndex],
+                    cloudiness: dayCloudinessForecasts[dayIndex],
+                    posibilityOfPrecipitation: dayPosibilityOfPrecipitationForecast[dayIndex]
                 )
             }
             
@@ -96,66 +158,81 @@ class WeeklyForecastViewModel: ObservableObject {
         var nightMinTemp = [Int]()
         var weekDaysForNightTimeForecasts = [String]()
         var iconNamesForNightTimeForecasts = [String]()
+        var humidityForecasts = [Int]()
+        var windSpeedForecasts = [Double]()
+        var visibilityForecasts = [Int]()
+        var pressureForecasts = [Int]()
+        var cloudinessForecasts = [Int]()
+        var posibilityOfPrecipitationForecasts = [Double]()
         
-        let (datesArray, _) = createsForecastsDatesAndUniqueDaysArrays(model: model)
-        let (_, uniqueDays) = createsForecastsDatesAndUniqueDaysArrays(model: model)
-        
-        // Properties used in the ForLoop for storing temporary data.
-        var dayIndexes = [Int]()
-        var dayTemps = [Int]()
-        var weekDay = [String]()
-        var weatherDescriptions = [String]()
+        let (datesArray, uniqueDays) = createsForecastsDatesAndUniqueDaysArrays(model: model)
         
         for day in uniqueDays {
+            // Get the indices of forecasts for a day at a time
+            let dayIndices = datesArray.indices(matching: day)
             
-            // Get the indexes of forecasts for a day at a time
-            dayIndexes.removeAll()
-            for (index, date) in datesArray.enumerated() {
-                if day == date {
-                    dayIndexes.append(index)
-                }
-            }
+            // Properties used in the ForLoop for storing temporary data.
+            var dayTemps = [Int]()
+            var weekDays = [String]()
+            var weatherDescriptions = [String]()
+            var humidity = [Int]()
+            var windSpeed = [Double]()
+            var visibility = [Int]()
+            var pressure = [Int]()
+            var cloudiness = [Int]()
+            var posibilityOfPrecipitation = [Double]()
             
-            dayTemps.removeAll()
-            weekDay.removeAll()
-            weatherDescriptions.removeAll()
-            for dayIndex in dayIndexes {
-                if model.list[dayIndex].sys.partOfTheDay == "n" {
-                    
-                    // Append the maximum temperature for night time
+            for dayIndex in dayIndices {
+                if model.list[dayIndex].isNight {
+                    // Append the minimum temperature for night time
                     dayTemps.append(Int(model.list[dayIndex].main.tempMin.celsiusFromKelvinValue))
 
                     // Append only one weekDay name (its gonna be the same for all forecasts for a particular night)
-                    if weekDay.count == 0 {
+                    if weekDays.count == 0 {
                         let currentWeekDay = model.list[dayIndex].weekDay
-                        weekDay.append(currentWeekDay)
+                        weekDays.append(currentWeekDay)
                     }
                     
                     // Append the weather descriptions for all forecasts of the night
                     weatherDescriptions.append(model.list[dayIndex].weather[0].description)
                     
+                    humidity.append(model.list[dayIndex].main.humidity)
+                    windSpeed.append(model.list[dayIndex].wind.speed)
+                    visibility.append(model.list[dayIndex].visibility)
+                    pressure.append(model.list[dayIndex].main.pressure)
+                    cloudiness.append(model.list[dayIndex].clouds.all)
+                    posibilityOfPrecipitation.append(model.list[dayIndex].rain?.rain ?? 0.0)
                 }
             }
             
-            // After collecting data from the forecasts for a night, only the min temperature, the unduplicated week name and one icon name will be added to the arrays that will be returned.
-            if dayTemps.count >= 1 {
-                nightMinTemp.append(dayTemps.min() ?? 0)
-            }
-            
-            if weekDay.count == 1 {
-                weekDaysForNightTimeForecasts.append(weekDay[0])
-            }
-            
-            if weatherDescriptions.count >= 1 {
-                let iconName = determineWeatherIconsNames(description: weatherDescriptions[0], isDayTime: true)
+            if   weatherDescriptions.count >= 1 {
+                let iconName = determineWeatherIconsNames(description: weatherDescriptions[0], isDayTime: false)
                 iconNamesForNightTimeForecasts.append(iconName)
+                
+                nightMinTemp.append(dayTemps.min() ?? 0)
+                humidityForecasts.append(humidity.average())
+                windSpeedForecasts.append(windSpeed.average())
+                visibilityForecasts.append(visibility.average())
+                pressureForecasts.append(pressure.average())
+                cloudinessForecasts.append(cloudiness.max() ?? 0)
+                posibilityOfPrecipitationForecasts.append(posibilityOfPrecipitation.max() ?? 0)
+                
+                if weekDays.count == 1 {
+                    weekDaysForNightTimeForecasts.append(weekDays[0])
+                }
             }
         }
         
         return PartOfTheDayDescription(
             temperatures: nightMinTemp,
             weekDays: weekDaysForNightTimeForecasts,
-            iconNames: iconNamesForNightTimeForecasts
+            iconNames: iconNamesForNightTimeForecasts,
+            humidity: humidityForecasts,
+            pressure: pressureForecasts,
+            windSpeed: windSpeedForecasts,
+            visibility: visibilityForecasts,
+            cloudiness: cloudinessForecasts,
+            posibilityOfPrecipitation: posibilityOfPrecipitationForecasts
         )
     }
     
@@ -164,33 +241,36 @@ class WeeklyForecastViewModel: ObservableObject {
         var daysMaxTemp = [Int]()
         var weekDaysForDayTimeForecasts = [String]()
         var iconNamesForDayTimeForecasts = [String]()
+        var humidityForecasts = [Int]()
+        var windSpeedForecasts = [Double]()
+        var visibilityForecasts = [Int]()
+        var pressureForecasts = [Int]()
+        var cloudinessForecasts = [Int]()
+        var posibilityOfPrecipitationForecasts = [Double]()
         
-        let (datesArray, _) = createsForecastsDatesAndUniqueDaysArrays(model: model)
-        let (_, uniqueDays) = createsForecastsDatesAndUniqueDaysArrays(model: model)
+        let (datesArray, uniqueDays) = createsForecastsDatesAndUniqueDaysArrays(model: model)
         
         // Properties used in the ForLoop for storing temporary data.
-        var dayIndexes = [Int]()
-        var dayTemps = [Int]()
-        var weekDay = [String]()
-        var weatherDescriptions = [String]()
+       
         
         for day in uniqueDays {
+            // Get the indices of forecasts for a day at a time
+            let dayIndices = datesArray.indices(matching: day)
             
-            // Get the indexes of forecasts for a day at a time
-            dayIndexes.removeAll()
-            for (index, date) in datesArray.enumerated() {
-                if day == date {
-                    dayIndexes.append(index)
-                }
-            }
-            
-            dayTemps.removeAll()
-            weekDay.removeAll()
-            weatherDescriptions.removeAll()
-            for dayIndex in dayIndexes {
+            var dayTemps = [Int]()
+            var weekDay = [String]()
+            var weatherDescriptions = [String]()
+            var humidity = [Int]()
+            var windSpeed = [Double]()
+            var visibility = [Int]()
+            var pressure = [Int]()
+            var cloudiness = [Int]()
+            var posibilityOfPrecipitation = [Double]()
+    
+            for dayIndex in dayIndices {
                 if model.list[dayIndex].sys.partOfTheDay == "d" {
                     
-                    // Append he maximum temperature for day time
+                    // Append the maximum temperature for day time
                     dayTemps.append(Int(model.list[dayIndex].main.tempMax.celsiusFromKelvinValue))
                     
                     // Append only one weekDay name (its gonna be the same for all forecasts for a particular day)
@@ -202,29 +282,46 @@ class WeeklyForecastViewModel: ObservableObject {
                     // Append the weather descriptions for all forecasts of the day
                     weatherDescriptions.append(model.list[dayIndex].weather[0].description)
                     
+                    humidity.append(model.list[dayIndex].main.humidity)
+                    windSpeed.append(model.list[dayIndex].wind.speed)
+                    visibility.append(model.list[dayIndex].visibility)
+                    pressure.append(model.list[dayIndex].main.pressure)
+                    cloudiness.append(model.list[dayIndex].clouds.all)
+                    posibilityOfPrecipitation.append(model.list[dayIndex].rain?.rain ?? 0.0)
+                    
                 }
             }
-            
-            // After collecting data from the forecasts for a day, only the max temperature, the unduplicated week name and one icon name will be added to the arrays that will be returned.
-
-            if dayTemps.count >= 1 {
+          
+            if weatherDescriptions.count >= 1 {
+                
+                let iconName = determineWeatherIconsNames(description: weatherDescriptions[0], isDayTime: true)
+                iconNamesForDayTimeForecasts.append(iconName)
+                
                 daysMaxTemp.append(dayTemps.max() ?? 0)
+                humidityForecasts.append(humidity.average())
+                windSpeedForecasts.append(windSpeed.average())
+                visibilityForecasts.append(visibility.average())
+                pressureForecasts.append(pressure.average())
+                cloudinessForecasts.append(cloudiness.max() ?? 0)
+                posibilityOfPrecipitationForecasts.append(posibilityOfPrecipitation.max() ?? 0)
             }
             
             if weekDay.count == 1 {
                 weekDaysForDayTimeForecasts.append(weekDay[0])
-            }
-            
-            if weatherDescriptions.count >= 1 {
-                let iconName = determineWeatherIconsNames(description: weatherDescriptions[0], isDayTime: true)
-                iconNamesForDayTimeForecasts.append(iconName)
             }
         }
         
         return PartOfTheDayDescription(
             temperatures: daysMaxTemp,
             weekDays: weekDaysForDayTimeForecasts,
-            iconNames: iconNamesForDayTimeForecasts)
+            iconNames: iconNamesForDayTimeForecasts,
+            humidity: humidityForecasts,
+            pressure: pressureForecasts,
+            windSpeed: windSpeedForecasts,
+            visibility: visibilityForecasts,
+            cloudiness: cloudinessForecasts,
+            posibilityOfPrecipitation: posibilityOfPrecipitationForecasts
+        )
     }
     
     /// Creates a tuple with arrays used for day descriptions and night descriptions for populating weekly forecast graph.
@@ -299,7 +396,6 @@ class WeeklyForecastViewModel: ObservableObject {
             for day in weekDaysForNightTime {
                 forecastedWeekDays.append(day)
             }
-            print("Error: weekDaysForDayTimeForecasts[1] == weekDaysForNightTimeForecasts[0] ")
         }
         
         return forecastedWeekDays
@@ -311,13 +407,28 @@ struct DailyForecast: Identifiable {
     var dayTimeWeekDay: String?
     var dayTimeTemp: Int?
     var dayTimeIcon: String?
+    var alteredDayTimeTemp: Int?
     var nightTimeWeekDay: String?
     var nightTimeTemp: Int?
     var nightTimeIcon: String?
+    var alteredNightTimeTemp: Int?
+    var humidity: Int?
+    var pressure: Int?
+    var windSpeed: Double?
+    var visibility: Int?
+    var cloudiness: Int?
+    var posibilityOfPrecipitation: Double?
 }
 
 struct PartOfTheDayDescription {
     var temperatures: [Int]
     var weekDays: [String]
     var iconNames: [String]
+    var humidity: [Int]
+    var pressure: [Int]
+    var windSpeed: [Double]
+    var visibility: [Int]
+    var cloudiness: [Int]
+    var posibilityOfPrecipitation: [Double]
 }
+

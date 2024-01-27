@@ -20,9 +20,8 @@ final class TemperatureView: UIView {
     
     let temperatureLabel: UILabel = {
         let temperatureLabel = UILabel()
-        temperatureLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        temperatureLabel.font = .systemFont(ofSize: FontSizes.subtitle, weight: .semibold)
         temperatureLabel.textColor = UIColor.gray.withAlphaComponent(0.8)
-        temperatureLabel.backgroundColor = UIColor.secondaryViewBackground
         temperatureLabel.textAlignment = .right
         return temperatureLabel
     }()
@@ -35,7 +34,6 @@ final class TemperatureView: UIView {
     func temperatureViewSetup() {
         self.addSubview(temperatureLabel)
         self.addSubview(weatherIcon)
-        self.backgroundColor = UIColor.secondaryViewBackground
         
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         weatherIcon.translatesAutoresizingMaskIntoConstraints = false
