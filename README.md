@@ -8,6 +8,8 @@ During the development of this app, I focused on the creation of custom UI eleme
 
 Another focus point was the exercise in data transformation of the fidly JSON response into structured data that is more suitable to display in a UI app, and dealing with gaps in data in the free version of the API by applying interpolation where needed.
 
+#### In order to launch the app you will need to create a free account on https://openweathermap.org/api and add you AccessKey to `WeatherServiceImp.Swift`
 
 ![Simulator Screenshot - iPhone 15 Pro - 2024-02-07 at 14 48 52](https://github.com/PatriciaCostin/WeatherApp/assets/124291922/1104b7c8-200a-41c5-b7b0-d96d0c85e990)
 ![Simulator Screenshot - iPhone 15 Pro - 2024-02-07 at 14 49 42](https://github.com/PatriciaCostin/WeatherApp/assets/124291922/ecec2bb0-325d-4b90-9425-dbbbf9effdc3)
+
